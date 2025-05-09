@@ -26,12 +26,14 @@ int main(){
     datecmp();
     timecmp();
 }
+
 //파일 1의 정보를 가져오는 함수 작성
 void filestat1(){
     if (stat("text1", &stat1) == -1) {
         perror("파일 'text1'을 찾을 수 없습니다"); // 에러 메시지 출력
         return;
     }
+
 }
 
 //파일 2의 정보를 가져오는 함수 작성
@@ -41,6 +43,7 @@ void filestat2(){
         return;
     }
 }
+
 //파일 1의 시간 정보를 가져오는 함수 작성
 void filetime1(){      
     struct tm* temp = localtime(&stat1.st_mtime);// 마지막 수정 시간 → 로컬 시간(time1) 저장  
@@ -49,7 +52,6 @@ void filetime1(){
         return;
     }
     time1 = temp;
-
 }
 
 //파일 2의 시간 정보를 가져오는 함수 작성
@@ -73,8 +75,13 @@ void sizecmp() {
 }
 
 //두 개의 파일 블락 수를 비교하는 함수 작성
-void blockcmp(){
-    
+void blockcmp() {
+    if (stat1.st_blocks > stat2.st_blocks)
+        printf("block compare\ntext1 is bigger\n\n");
+    else if (stat1.st_blocks < stat2.st_blocks)
+        printf("block compare\ntext2 is bigger\n\n");
+    else
+        printf("block compare\nsizes are equal\n\n");
 }
 
 //두 개의 파일 수정 날짜를 비교하는 함수 작성
