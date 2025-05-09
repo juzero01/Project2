@@ -1,4 +1,4 @@
-#include <stdio.h>
+﻿#include <stdio.h>
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <unistd.h>
@@ -6,6 +6,7 @@
 
 struct stat stat1, stat2;
 struct tm *time1, *time2;
+struct tm t1,t2;
 
 void filestat1();
 void filestat2();
@@ -46,22 +47,24 @@ void filestat2(){
 
 //파일 1의 시간 정보를 가져오는 함수 작성
 void filetime1(){      
-    struct tm* temp = localtime(&stat1.st_mtime);// 마지막 수정 시간 → 로컬 시간(time1) 저장  
+    struct tm* temp = localtime(&stat1.st_mtime);
     if (temp == NULL) {
         perror("localtime() 변환 실패");
         return;
     }
-    time1 = temp;
+    t1 = *temp;
+    time1 = &t1;
 }
 
 //파일 2의 시간 정보를 가져오는 함수 작성
 void filetime2(){
-    struct tm* temp = localtime(&stat2.st_mtime);// 마지막 수정 시간 → 로컬 시간(time2) 저장
+    struct tm* temp = localtime(&stat2.st_mtime);
     if (temp == NULL) {
         perror("localtime() 변환 실패");
         return;
     }
-    time2 = temp;
+    t2 = *temp;
+    time2 = &t2;
 }
 
 //두 개의 파일 크기를 비교하는 함수 작성
