@@ -29,12 +29,18 @@ int main(){
 
 //파일 1의 정보를 가져오는 함수 작성
 void filestat1(){
-
+    if (stat("text1", &stat1) == -1) {
+        perror("파일 'text1'을 찾을 수 없습니다"); // 에러 메시지 출력
+        return;
+    }
 }
 
 //파일 2의 정보를 가져오는 함수 작성
 void filestat2(){
-
+    if (stat("text2", &stat2) == -1) {
+        perror("파일 'text2'을 찾을 수 없습니다"); // 에러 메시지 출력
+        return;
+    }
 }
 
 //파일 1의 시간 정보를 가져오는 함수 작성
@@ -44,7 +50,7 @@ void filetime1(){
 
 //파일 2의 시간 정보를 가져오는 함수 작성
 void filetime2(){
-
+        
 }
 
 //두 개의 파일 크기를 비교하는 함수 작성
@@ -75,5 +81,5 @@ void datecmp(){
 
 //두 개의 파일 수정 시간을 비교하는 함수 작성
 void timecmp(){
-
+    
 }
