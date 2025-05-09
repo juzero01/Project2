@@ -29,54 +29,43 @@ int main(){
 
 //파일 1의 정보를 가져오는 함수 작성
 void filestat1(){
-    if (stat("text1", &stat1) == -1) {
-        perror("파일 'text1'을 찾을 수 없습니다"); // 에러 메시지 출력
-        return;
-    }
+    
 }
 
 //파일 2의 정보를 가져오는 함수 작성
 void filestat2(){
-    if (stat("text2", &stat2) == -1) {
-        perror("파일 'text2'을 찾을 수 없습니다"); // 에러 메시지 출력
-        return;
-    }
+    
 }
 
 //파일 1의 시간 정보를 가져오는 함수 작성
 void filetime1(){
-
+    
 }
 
 //파일 2의 시간 정보를 가져오는 함수 작성
 void filetime2(){
-        
+    
 }
 
 //두 개의 파일 크기를 비교하는 함수 작성
-void sizecmp(){
-    
+void sizecmp() {
+    if (stat1.st_size > stat2.st_size)
+        printf("size compare\ntext1 is bigger\n\n");
+    else if (stat1.st_size < stat2.st_size)
+        printf("size compare\ntext2 is bigger\n\n");
+    else
+        printf("size compare\nsizes are equal\n\n");
 }
 
 //두 개의 파일 블락 수를 비교하는 함수 작성
-void blockcmp(){
-    
+void blockcmp() {
+      
 }
+
 
 //두 개의 파일 수정 날짜를 비교하는 함수 작성
 void datecmp(){
-    printf("date compare\n");
-    char *file1 = "text1";
-    char *file2 = "text2";
     
-    if (time1->tm_year != time2->tm_year)
-        printf("%s is newer\n", time1->tm_year > time2->tm_year ? file1 : file2);
-    else if (time1->tm_mon != time2->tm_mon)
-        printf("%s is newer\n", time1->tm_mon > time2->tm_mon ? file1 : file2);
-    else if (time1->tm_mday != time2->tm_mday)
-        printf("%s is newer\n", time1->tm_mday > time2->tm_mday ? file1 : file2);
-    else
-        printf("dates are equal\n");
 }
 
 //두 개의 파일 수정 시간을 비교하는 함수 작성
