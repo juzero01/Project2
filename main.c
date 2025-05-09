@@ -50,7 +50,7 @@ void filetime1(){
 
 //파일 2의 시간 정보를 가져오는 함수 작성
 void filetime2(){
-        
+
 }
 
 //두 개의 파일 크기를 비교하는 함수 작성
@@ -81,5 +81,17 @@ void datecmp(){
 
 //두 개의 파일 수정 시간을 비교하는 함수 작성
 void timecmp(){
+    printf("time compare\n");
+    char *file1 = "text1";
+    char *file2 = "text2";
     
+    if (time1->tm_hour != time2->tm_hour)
+        printf("%s is newer\n", time1->tm_hour > time2->tm_hour ? file1 : file2);
+    else if (time1->tm_min != time2->tm_min)
+        printf("%s is newer\n", time1->tm_min > time2->tm_min ? file1 : file2);
+    else if (time1->tm_sec != time2->tm_sec)
+        printf("%s is newer\n", time1->tm_sec > time2->tm_sec ? file1 : file2);
+    else
+        printf("times are equal\n");
+
 }
